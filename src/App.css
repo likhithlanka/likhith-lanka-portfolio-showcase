@@ -1,42 +1,56 @@
+
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  text-align: left;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.wave {
+  animation: wave 2s ease-in-out infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
 }
 
-@keyframes logo-spin {
-  from {
+@keyframes wave {
+  0%, 100% {
     transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  10%, 30%, 50%, 70%, 90% {
+    transform: rotate(20deg);
+  }
+  20%, 40%, 60%, 80% {
+    transform: rotate(-20deg);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
 }
 
-.card {
-  padding: 2em;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.read-the-docs {
-  color: #888;
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Animation delays for staggered effects */
+.observe-on-scroll {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.observe-on-scroll.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
 }
