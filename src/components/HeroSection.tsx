@@ -1,6 +1,7 @@
 
 import { Download, Linkedin, ArrowDown } from 'lucide-react';
 import { useContent } from '../contexts/ContentContext';
+import designSystem from '../lib/design-system';
 
 const HeroSection = () => {
   const { content } = useContent();
@@ -23,16 +24,41 @@ const HeroSection = () => {
       <div className="container-width text-center">
         <div className="animate-fade-in staggered-animation">
           <div className="floating-element mb-8">
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-8 magnetic-hover leading-tight">
+            <h1 
+              className="text-gray-900 dark:text-white mb-8 magnetic-hover leading-tight"
+              style={{
+                fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
+                fontWeight: designSystem.typography.weights.bold,
+                fontFamily: designSystem.typography.fonts.primary,
+                lineHeight: designSystem.typography.lineHeights.tight,
+                letterSpacing: designSystem.typography.letterSpacing.tight,
+              }}
+            >
               Hi, I'm <span className="handwritten">Likhith</span> <span className="wave">👋</span>
             </h1>
           </div>
           <div className="section-header-enhanced mb-10">
-            <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+            <h2 
+              className="text-gray-600 dark:text-gray-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed"
+              style={{
+                fontSize: 'clamp(1.25rem, 3vw, 1.5rem)',
+                fontWeight: designSystem.typography.weights.light,
+                fontFamily: designSystem.typography.fonts.primary,
+                lineHeight: designSystem.typography.lineHeights.relaxed,
+              }}
+            >
               {content.hero.subtitle}
             </h2>
           </div>
-          <p className="text-lg text-gray-500 dark:text-gray-400 mb-14 max-w-2xl mx-auto leading-relaxed">
+          <p 
+            className="text-gray-500 dark:text-gray-400 mb-14 max-w-2xl mx-auto leading-relaxed"
+            style={{
+              fontSize: designSystem.typography.sizes.lg,
+              fontWeight: designSystem.typography.weights.normal,
+              fontFamily: designSystem.typography.fonts.primary,
+              lineHeight: designSystem.typography.lineHeights.relaxed,
+            }}
+          >
             {content.hero.description}
           </p>
           
