@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -35,6 +36,36 @@
 
     --radius: 0.75rem;
   }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 217 91% 60%;
+  }
 }
 
 @layer base {
@@ -53,11 +84,11 @@
 
 @layer components {
   .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
+    @apply py-16 lg:py-24;
   }
 
   .container-width {
-    @apply max-w-6xl mx-auto;
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   .hover-lift {
@@ -69,10 +100,10 @@
   }
 
   .button-secondary {
-    @apply bg-white text-gray-900 border border-gray-200 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-md;
+    @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-md;
   }
 
   .skill-tag {
-    @apply bg-blue-50 text-blue-700 px-3 py-2 rounded-full text-sm font-medium hover:bg-blue-100 hover:scale-105 transition-all duration-200 cursor-default;
+    @apply bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-2 rounded-full text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-900/50 hover:scale-105 transition-all duration-200 cursor-default;
   }
 }

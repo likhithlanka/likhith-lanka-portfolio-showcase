@@ -3,12 +3,17 @@ import { useEffect } from 'react';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
 import SkillsSection from '../components/SkillsSection';
-import ProjectsSection from '../components/ProjectsSection';
+import FeaturedWork from '../components/FeaturedWork';
 import ExperienceSection from '../components/ExperienceSection';
 import EducationSection from '../components/EducationSection';
-import ContactSection from '../components/ContactSection';
+import CodingActivitySection from '../components/CodingActivitySection';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
+import { ScrollProgress } from '../components/ScrollProgress';
+import { CursorSpotlight } from '../components/CursorSpotlight';
+import { CursorEffects } from '../components/CursorEffects';
+import { SmartCTA } from '../components/SmartCTA';
+import { SocialProof } from '../components/SocialProof';
 
 const Index = () => {
   useEffect(() => {
@@ -22,28 +27,39 @@ const Index = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-fade-in-up');
+          entry.target.classList.remove('opacity-0');
         }
       });
     }, observerOptions);
 
-    // Observe all sections
-    const sections = document.querySelectorAll('.observe-on-scroll');
-    sections.forEach((section) => observer.observe(section));
+    // Use setTimeout to ensure DOM is ready
+    setTimeout(() => {
+      const sections = document.querySelectorAll('.observe-on-scroll');
+      sections.forEach((section) => observer.observe(section));
+    }, 100);
 
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      {/* Interactive Effects */}
+      <CursorSpotlight />
+      <CursorEffects />
+      <SocialProof />
+      <SmartCTA />
+      
+      {/* Main Layout */}
+      <ScrollProgress />
       <Navigation />
       <main>
         <HeroSection />
         <AboutSection />
         <SkillsSection />
-        <ProjectsSection />
+        <FeaturedWork />
+        <CodingActivitySection />
         <ExperienceSection />
         <EducationSection />
-        <ContactSection />
       </main>
       <Footer />
     </div>
