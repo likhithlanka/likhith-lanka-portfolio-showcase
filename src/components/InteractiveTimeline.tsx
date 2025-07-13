@@ -109,85 +109,83 @@ export const InteractiveTimeline = () => {
   };
 
   return (
-    <div id="timeline" className="max-w-4xl mx-auto">
-      <div className="relative">
+    <div id="timeline" className="w-full max-w-6xl mx-auto px-4">
+      <div className="relative flex flex-col items-center">
         {/* Central timeline line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-blue-200 dark:bg-blue-800"></div>
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-blue-200 dark:bg-blue-800 z-0"></div>
         
         {timeline.map((item, index) => (
           <div 
             key={index}
-            className={`relative flex items-center mb-8 ${
-              index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-            } ${isVisible ? 'animate-fade-in-up' : ''}`}
+            className={`relative flex items-center justify-center w-full mb-12 ${
+              isVisible ? 'animate-fade-in-up' : 'opacity-0'
+            }`}
             style={{ animationDelay: `${index * 0.2}s` }}
           >
-            {/* Timeline dot */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full border-4 border-white dark:border-gray-900 z-10"></div>
+            {/* Timeline dot - always centered */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full border-4 border-white dark:border-gray-900 z-20"></div>
             
-            {/* Content card */}
-            <div 
-              className={`w-5/12 ${
-                index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'
-              }`}
-            >
-              <div 
-                className={`bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg cursor-pointer hover:shadow-xl transition-all duration-300 ${
-                  selectedYear === item.year ? 'ring-2 ring-blue-500' : ''
-                }`}
-                onClick={() => handleNodeClick(item.year)}
-              >
-                <div className="flex items-center mb-2">
-                  <div className="text-blue-600 dark:text-blue-400 mr-2">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-gray-900 dark:text-white">
-                      {item.role}
-                    </h3>
-                    <p className="text-blue-600 dark:text-blue-400 font-medium">
-                      {item.company}
-                    </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {item.duration}
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="mb-3">
-                  <span className="inline-block bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full text-sm font-medium">
-                    {item.impact}
-                  </span>
-                </div>
-
-                {selectedYear === item.year && (
-                  <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                    <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">
-                      Key Achievements:
-                    </h4>
-                    {item.achievements.map((achievement, i) => (
-                      <div key={i} className="text-sm text-gray-600 dark:text-gray-300 mb-1">
-                        ✓ {achievement}
-                      </div>
-                    ))}
-                    
-                    <div className="mt-3">
-                      <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">
-                        Technologies:
-                      </h4>
-                      <div className="flex flex-wrap gap-1">
-                        {item.technologies.map((tech, i) => (
-                          <span 
-                            key={i}
-                            className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+            {/* Content positioning for alternating layout */}
+            <div className={`w-full flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
+              <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                <div 
+                  className={`bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg cursor-pointer hover:shadow-xl transition-all duration-300 ${
+                    selectedYear === item.year ? 'ring-2 ring-blue-500' : ''
+                  } ${index % 2 === 0 ? 'text-right' : 'text-left'}`}
+                  onClick={() => handleNodeClick(item.year)}
+                >
+                  <div className={`flex items-center mb-2 ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
+                    <div className={`text-blue-600 dark:text-blue-400 ${index % 2 === 0 ? 'ml-2 order-2' : 'mr-2'}`}>
+                      {item.icon}
+                    </div>
+                    <div className={index % 2 === 0 ? 'order-1' : ''}>
+                      <h3 className="font-bold text-lg text-gray-900 dark:text-white">
+                        {item.role}
+                      </h3>
+                      <p className="text-blue-600 dark:text-blue-400 font-medium">
+                        {item.company}
+                      </p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {item.duration}
+                      </p>
                     </div>
                   </div>
-                )}
+                  
+                  <div className="mb-3">
+                    <span className="inline-block bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full text-sm font-medium">
+                      {item.impact}
+                    </span>
+                  </div>
+
+                  {selectedYear === item.year && (
+                    <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                      <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">
+                        Key Achievements:
+                      </h4>
+                      {item.achievements.map((achievement, i) => (
+                        <div key={i} className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+                          ✓ {achievement}
+                        </div>
+                      ))}
+                      
+                      <div className="mt-3">
+                        <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">
+                          Technologies:
+                        </h4>
+                        <div className="flex flex-wrap gap-1">
+                          {item.technologies.map((tech, i) => (
+                            <span 
+                              key={i}
+                              className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
