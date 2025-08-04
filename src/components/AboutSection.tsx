@@ -1,6 +1,5 @@
 
 import { useContent } from '../contexts/ContentContext';
-import designSystem from '../lib/design-system';
 
 const AboutSection = () => {
   const { content } = useContent();
@@ -9,52 +8,19 @@ const AboutSection = () => {
       <div className="container-width">
         <div className="observe-on-scroll opacity-0 staggered-animation">
           <div className="text-center mb-12">
-            <h2 
-              className="text-gray-900 dark:text-white magnetic-hover"
-              style={{
-                fontSize: designSystem.components.heading.h2.fontSize,
-                fontWeight: designSystem.components.heading.h2.fontWeight,
-                lineHeight: designSystem.components.heading.h2.lineHeight,
-                letterSpacing: designSystem.components.heading.h2.letterSpacing,
-                fontFamily: designSystem.typography.fonts.primary,
-              }}
-            >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white magnetic-hover">
               {content.about.title}
             </h2>
-            <p 
-              className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-3"
-              style={{
-                fontSize: designSystem.components.text.bodyLarge.fontSize,
-                fontWeight: designSystem.components.text.bodyLarge.fontWeight,
-                lineHeight: designSystem.components.text.bodyLarge.lineHeight,
-                fontFamily: designSystem.typography.fonts.primary,
-              }}
-            >
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-3">
               {content.about.subtitle}
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-4">
-              <p 
-                className="text-gray-700 dark:text-gray-300 leading-relaxed text-center"
-                style={{
-                  fontSize: designSystem.components.text.bodyLarge.fontSize,
-                  fontWeight: designSystem.components.text.bodyLarge.fontWeight,
-                  lineHeight: designSystem.components.text.bodyLarge.lineHeight,
-                  fontFamily: designSystem.typography.fonts.primary,
-                }}
-              >
+              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-center">
                 {content.about.paragraph1}
               </p>
-              <p 
-                className="text-gray-700 dark:text-gray-300 leading-relaxed text-center"
-                style={{
-                  fontSize: designSystem.components.text.bodyLarge.fontSize,
-                  fontWeight: designSystem.components.text.bodyLarge.fontWeight,
-                  lineHeight: designSystem.components.text.bodyLarge.lineHeight,
-                  fontFamily: designSystem.typography.fonts.primary,
-                }}
-              >
+              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-center">
                 {content.about.paragraph2}
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-6 max-w-2xl mx-auto">

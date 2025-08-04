@@ -6,6 +6,7 @@ import SkillsSection from '../components/SkillsSection';
 import FeaturedWork from '../components/FeaturedWork';
 import ExperienceSection from '../components/ExperienceSection';
 import EducationSection from '../components/EducationSection';
+import CodingActivitySection from '../components/CodingActivitySection';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import { ScrollProgress } from '../components/ScrollProgress';
@@ -56,6 +57,7 @@ const Index = () => {
         <AboutSection />
         <SkillsSection />
         <FeaturedWork />
+        <CodingActivitySection />
         <ExperienceSection />
         <EducationSection />
       </main>
